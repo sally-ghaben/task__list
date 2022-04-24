@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+Use App\Http\Controllers\TaskController;
+use App\Models\Task;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[TaskController::class, 'index']);
+Route::post('store',[TaskController::class, 'store']);
+Route::post('delete/{id}',[TaskController::class, 'destroy']);
+Route::post('edit/{id}',[TaskController::class, 'edit']);
+Route::put('update/{id}',[TaskController::class, 'update']);
